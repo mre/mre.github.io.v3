@@ -1,10 +1,9 @@
 +++
 title = "Launching a Side Project with Github Sponsors"
-date = 2020-08-20
+date = 2020-08-21
 +++
 
-Today we launched [analysis-tools.dev](https://analysis-tools.dev), and boy have I underestimated the
-response.
+Yesterday we launched [analysis-tools.dev](https://analysis-tools.dev), and boy had I underestimated the response.
 
 It's a side project about comparing static code analysis tools.
 Static analysis helps improve code quality by detecting bugs in source code
