@@ -28,7 +28,7 @@ Everyone likes business metrics. Here are some of ours:
 - I had the idea to build a website for years now, but my coworker [Jakub]
   joined in May 2020 to finally make it a reality.
 
-{{ figure(src="star-history.png", caption="Github stars over time. That graph screams BUSINESS OPPORTUNITY.",
+{{ figure(src="star-history.jpg", caption="Github stars over time. That graph screams BUSINESS OPPORTUNITY.",
 credits="https://star-history.t9t.io") }}
 
 "Why did it take five years to build a website!?", I hear you ask.  Because I
@@ -105,7 +105,7 @@ page](https://github.com/sponsors/analysis-tools-dev/).
 Businesses want reliable partners and a reasonable value proposal,
 so a prerequisite is that the sponsors page had to be meticulously polished.
 
-{{ figure(src="sponsors.png", caption="Our Github Sponsors page") }}
+{{ figure(src="sponsors.jpg", caption="Our Github Sponsors page") }}
 
 Just like *Star Wars Episode IX*, we received mixed reviews: many people never
 replied, others passed the message
@@ -157,7 +157,7 @@ It!"](https://analysis-tools.dev/blog/static-analysis-is-broken-lets-fix-it)
 
 Phase 4: Writing the announcement tweet on Twitter:
 
-{{ figure(src="tweet.png", caption="We got quite a bit of traffic from that
+{{ figure(src="tweet.jpg", caption="We got quite a bit of traffic from that
 tweet: 55 retweets, 66 likes and counting",
 credits="https://twitter.com/matthiasendler/status/1296162427797671936") }}
 
@@ -176,18 +176,18 @@ It helps to cater the message to each audience and stay humble, though.
 
 The feedback from all of that was **nuts**:
 
-{{ figure(src="traffic.png", caption="Web traffic on launch day",
+{{ figure(src="traffic.jpg", caption="Web traffic on launch day",
 credits="Cloudflare") }}
 
 Surprisingly, the Cloudflare edge workers didn't break a sweat:
 
-{{ figure(src="worker.png", caption="Edge worker CPU time",
+{{ figure(src="worker.jpg", caption="Edge worker CPU time",
 credits="Cloudflare") }}
 
 My boss [Xoan Vilas](https://twitter.com/xo4n) even did a quick performance
 analysis and approved (thanks boss!):
 
-{{ figure(src="perf.png") }}
+{{ figure(src="perf.jpg") }}
 
 High fives all around!
 
@@ -207,6 +207,6 @@ for a few tools you can recommend? Hey, and if you feel unusually generous today
 (or you have a fabulous employer that supports open-source), why not check out
 our [sponsorship page](https://github.com/sponsors/analysis-tools-dev/)? 
 
-{{ figure(src="team.png", caption="Jakub (right) and me in Vienna, Austria. It's great there.") }}
+{{ figure(src="team.jpg", caption="Jakub (right) and me in Vienna, Austria. It's great there.") }}
 
 [jakub]: https://github.com/jakubsacha
