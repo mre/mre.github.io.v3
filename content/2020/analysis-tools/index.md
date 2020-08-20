@@ -3,89 +3,95 @@ title = "Launching a Side Project with Github Sponsors"
 date = 2020-08-20
 +++
 
-Today we launched [analysis-tools.dev] and boy have I underestimated the
+Today we launched [analysis-tools.dev](https://analysis-tools.dev), and boy have I underestimated the
 response.
 
-It's a side project about comparing static code analysis tools and it's
-[completely open-source](https://github.com/analysis-tools-dev/). We wanted to
+It's a side project about comparing static code analysis tools.
+Static analysis helps improve code quality by detecting bugs in source code
+without even running it.
+
+What's best about the project is that it's [completely open-source](https://github.com/analysis-tools-dev/). We wanted to
 build a product that wouldn't depend on showing ads or tracking users. Instead,
-we were asking for sponsors on Github, that's it. I learned a lot in the process
-and if you like to do the same, keep reading!
+we were asking for sponsors on Github &mdash; that's it. We learned a lot in the
+process, and if you like to do the same, keep reading!
 
-## Stats
+## First, Some Stats
 
-Everyone likes facts. Here are some of ours:
+Everyone likes business metrics. Here are some of ours:
 
-- Started as an awesome list on Github in [December
-  2015](https://endler.dev/2017/obsolete/)
+- The project started as an _awesome list_ on Github in [December
+  2015](https://endler.dev/2017/obsolete/).
+- We're currently listing 470 static analysis tools.
 - Traffic grew continuously. Counting 7.5k stars and over 190 contributors at
   the moment.
+- 500-1000 unique users per week.
 - I had the idea to build a website for years now, but my coworker [Jakub]
   joined in May 2020 to finally make it a reality.
 
-{{ figure(src="star-history.png", caption="Github stars over time",
+{{ figure(src="star-history.png", caption="Github stars over time. That graph screams BUSINESS OPPORTUNITY.",
 credits="https://star-history.t9t.io") }}
 
-Why did it take almost five years to build a website you ask? Because I thought
-the idea was so obvious that others must have tried and failed.
+"Why did it take five years to build a website!?", I hear you ask.  Because I
+thought the idea was so obvious that others must have tried before and failed.
 
 I put it off, even though nobody stepped in to fill this niche.  
 I put it off, even though I kept the list up-to-date for five years, just to
-learn the tools that are out there.  
-You get the idea: When things sound so obvious, it's mostly because they are, so
+learn about the tools out there.  
+You get the gist: When ideas sound obvious, it's probably because they are, so
 don't put things off for too long.
 
 ## Revenue Model
 
-It took a while to figure out how to financially support the project. We knew
-what we didn't want: an SEO landfill backed by adwords. Neither did we want to
-"sell user data" to trackers. No, this is exactly what we wanted to fix in the
-first place.
+It took a while to figure out how to support the project financially. We knew
+what we didn't want: an SEO landfill backed by AdWords. Neither did we want to
+"sell user data" to trackers. 
 
-We owed all the contributors on Github that the data should stay free for
-everyone. Initially we thought about paying from our own pocket, but we'd have
-no incentive to maintain the site or extend it with new features.
+We owe it to the contributors on Github to keep all data free for everyone. 
+How could we still build a service around it?
+Initially, we thought about swallowing the infrastructure costs
+ourselves, but we'd have no incentive to maintain the site or extend it with new
+features.
 
-Github Sponsors was still quite new at that time, but as soon as we realized
-that it was an option, it suddenly clicked: Companies that aren't afraid that
-users compare their product with their competition have an incentive to support
-an open platform that facilitates that. Furthermore, we could avoid bias and
-build a product that makes comparison objective and easy.
+[Github Sponsors](https://github.com/sponsors) was still quite new at that time. Yet, as soon as we realized
+that it was an option, it suddenly clicked: Companies that are not afraid of a
+comparison with the competition have an incentive to support an open platform
+that facilitates that. Furthermore, we could avoid bias and
+build a product that makes comparing objective and accessible.
 
-Sponsoring could be the antidote to aimless growth and rather allow us to build
-a lean, sustainable side business. We don't expect analysis-tools.dev to ever be
+Sponsoring could be the antidote to soulless growth and instead allow us to build
+a lean, sustainable side business. We don't expect analysis-tools.dev ever to be
 a full-time job. The market might be too small for that -- and that's fine.
 
 ## Tech
 
 Once we had a revenue model, we could focus on the tech. We're both engineers,
-which helps iterating quickly.
+which helps with iterating quickly.
 
-Initially, I wanted to build something really fancy with
+Initially, I wanted to build something fancy with
 [Yew](https://github.com/yewstack/yew). It's a Rust/Webassembly framework and
 your boy [likes Rust/Webassembly](https://endler.dev/2019/tinysearch/)...
 
-I'm glad Jakub suggested something else: GatsbyJS. Now, let me be honest with
+I'm glad Jakub suggested something else: [Gatsby](https://www.gatsbyjs.com/). Now, let me be honest with
 you: I couldn't care less about Gatsby. And that's what I said to Jakub: "I
-couldn't care less about Gatsby." But that's exactly the point: not being
-emotionally attached to something makes me focus on the job and not the tool. I
-get stuff done!
+couldn't care less about Gatsby." But that's precisely the point: not being
+emotionally attached to something makes us focus on the job and not the tool.
+We get more stuff done!
 
-From there, it was pretty much easy going: we used a starter template, Jakub
-showed me how to use that thing and how the GraphQL integration worked and we
+From there on, it was pretty much easy going: we used a starter template, Jakub
+showed me how the GraphQL integration worked, and we
 even got to use some Rust! The site runs on Cloudflare as an [edge
-worker](https://workers.cloudflare.com/), which built on top of Rust. (Yeah, we
-cheated a bit.)
+worker](https://workers.cloudflare.com/) built on top of Rust. (Yeah, I cheated
+a bit.)
 
-Count 1..2..3 and we were done with a prototype and Bob's our uncle!
+Count to three, MVP!
 
 ## Finding Sponsors
 
-So we had the prototype but zero sponsors so far. What started now was (and
+So we had our prototype but zero sponsors so far. What started now was (and
 still is) by far the hardest part: convincing people to support us.
 
-We were smart enough not to send cold e-mails, because most companies ignore
-them. Rather, we looked at our network and realized that developers reached out
+We were smart enough not to send cold e-mails because most companies ignore
+them. Instead, we turned to our network and realized that developers reached out
 before to add their company's projects to the old static analysis list on
 Github.
 
@@ -93,51 +99,59 @@ These were the people we contacted first. We tried to keep the messages short
 and personal.
 
 What worked best was a medium-sized e-mail with some context and a reminder that
-they contributed to the project before. After that, our plan to start a side
-project and a link to our [sponsors
+they contributed to the project before. We included a link to our [sponsors
 page](https://github.com/sponsors/analysis-tools-dev/).
 
-A prerequisite is that the sponsors page had to be really polished: businesses
-look for a reliable partner and a working business proposal.
+Businesses want reliable partners and a reasonable value proposal,
+so a prerequisite is that the sponsors page had to be meticulously polished.
 
-We received mixed feedback: many people never replied, others passed the message
-on to their managers, which never replied, while others again had no interest in
-sponsoring an open-source projects in general. That's all fair: people are busy
-and sponsorware is quite a new concept.
+{{ figure(src="sponsors.png", caption="Our Github Sponsors page") }}
 
-There was however a rare breed of respondents, which expressed interested, but
-needed some guidance. For many, it is the first step towards sponsoring any
+Just like *Star Wars Episode IX*, we received mixed feedback: many people never
+replied, others passed the message
+on to their managers, which in turn never replied, while others again had no
+interest in sponsoring open-source projects in general. That's all fair game:
+people are busy, and sponsorware is quite a new concept. (As little rant: I'm of
+the opinion that tech businesses don't nearly sponsor enough, given all the
+value they get from Open Source. Would your company exist if there hadn't been a
+free operating system like Linux or a web server like Nginx or Apache when you
+got started?)
+
+There was, however, a rare breed of respondents, which expressed interest but
+needed some guidance. For many, it is the first step towards sponsoring _any_
 developer through Github Sponsors / OpenCollective.
 
-We explained to them that we use OpenCollective as our fiscal host and that they
-can get invoices through them since it's a 501(c)(6). If you don't know what
-that means, [their docs](https://docs.opencollective.com/help/) explain it quite
-clearly.
+It helped that we use OpenCollective as our fiscal host, which handles invoicing
+and donation transfers. [Their docs](https://docs.opencollective.com/help/)
+helped us a lot when getting started.
 
-The task of finding sponsors is never done, but it was very reassuring to hear
-from [DeepCode](https://www.deepcode.ai/) - an AI based semantic analysis
-service, that they were willing to take a chance on us.
+The task of finding sponsors [is never
+done](https://www.youtube.com/watch?v=qHfAaG34H30), but it was very reassuring
+to hear from [DeepCode](https://www.deepcode.ai/) - an AI-based semantic
+analysis service, that they were willing to take a chance on us.
 
-Thanks to them, we could move on to finish the product. It really cannot be
-overstated enough: Because of them we can keep the site free for everybody. It
-also means free from ads and trackers.
+Thanks to them, we could move on to finish the product. Because of them, we can
+keep the site free for everybody. It also means the website is kept free from
+ads and trackers.
+
+In turn, DeepCode gets exposed to many great developers that care about code
+quality and might become customers. Also, they get recognized as a
+community-friendly tech company. Win-win!
 
 ## Marketing
 
-Jakub and me both had own businesses before, but the market dynamics have
-changed a lot. It doesn't help to make a thing and buy a couple of Google ads --
-you need a marketing plan and an audience.
+Jakub and I both had started businesses before, but this was the first truly
+open product we would build.
 
 We decided for a soft launch: deploy the page and let the crawlers index our
 site. The page is statically rendered and follows as many SEO guidelines as
-possible, so we were slowly seeing some improvements on the search engine
-rankings.
+possible, so we gradually saw improvements in search engine rankings.
 
 After we got some organic traffic and our first votes, we decided to ask our
-developer friends to test the page and vote on tools they know and use.
+developer friends to test the page and vote on tools they know and love.
 
 Phase 3 was writing an announcement blog post which, granted, was a bit
-click-baity, but it got a few clicks: ["Static Analysis is Broken -- Let's Fix
+clickbaity, but it got the job done: ["Static Analysis is Broken -- Let's Fix
 It!"](https://analysis-tools.dev/blog/static-analysis-is-broken-lets-fix-it)
 
 Phase 4: Writing the announcement tweet on Twitter:
@@ -146,9 +160,9 @@ Phase 4: Writing the announcement tweet on Twitter:
 tweet: 55 retweets, 66 likes and counting",
 credits="https://twitter.com/matthiasendler/status/1296162427797671936") }}
 
-Obviously everyone knew that we were asking for support, but we're thankful for
-each and everyone that retweeted. This is where a network of like-minded people
-can really help.
+Clearly, everyone knew that we were asking for support, but we're thankful for
+each and everyone that helped us out. This is one situation where having a
+network of like-minded people can help.
 
 As soon as we were confident that the site wasn't completely broken, we set off
 to announce it on
@@ -156,11 +170,10 @@ to announce it on
 (2 downvotes),
 [/r/SideProject](https://www.reddit.com/r/SideProject/comments/icupeu/we_made_a_website_to_compare_470_static_analysis/)
 (3 upvotes) and [HackerNews](https://news.ycombinator.com/item?id=24221708) (144
-upvotes, 47 comments). I knew that before, but you need a bunch of luck to get
-any attention on social media. It helps to cater the message to the audience and
-stay humble.
+upvotes, 47 comments). I knew that before, but social media is kind of unpredictable. 
+It helps to cater the message to each audience and stay humble, though.
 
-The feedback from all of that was nuts:
+The feedback from all of that was **nuts**:
 
 {{ figure(src="traffic.png", caption="Web traffic on launch day",
 credits="Cloudflare") }}
@@ -171,27 +184,28 @@ Surprisingly, the Cloudflare edge workers didn't break a sweat:
 credits="Cloudflare") }}
 
 My boss [Xoan Vilas](https://twitter.com/xo4n) even did a quick performance
-analysis and approved:
+analysis and approved (thanks boss!):
 
-{{ figure(src="worker.png", caption="Edge worker CPU time",
-credits="Cloudflare") }}
+{{ figure(src="perf.png") }}
 
 High fives all around!
 
 ## Now what?
 
-Let's skip the usual marketing pitch: of course we'll add more features, of
-course we have more plans for the future. Instead, let's celebrate that
-milestone.
+Let's skip the usual marketing pitch: of course, we'll add more features; of
+course, we have more plans for the future. Instead, let's celebrate that
+milestone. 🎉
 
-Finally, I want you to think about similar niche projects that you've been
-putting off for too long. Not anymore! The next success stories is yours. So go
-out and make things.
+Finally, I want you to find your own little niche to work on. It's probably
+right in front of your nose, and you've been putting it off for too long. Not
+anymore! The next success story is yours. So go out and build things.
 
-Ah wait, actually before you go would you mind checking out
+Oh wait, before you leave, would you mind checking out
 [analysis-tools.dev](https://analysis-tools.dev/) and hitting that upvote button
-for a few tools you can recommend? Hey and if you feel generous today (or you
-have a great employer that supports open source), why not check out our
-[sponsorship page](https://github.com/sponsors/analysis-tools-dev/)? Hugs! 🤗
+for a few tools you can recommend? Hey, and if you feel unusually generous today
+(or you have a fabulous employer that supports open-source), why not check out
+our [sponsorship page](https://github.com/sponsors/analysis-tools-dev/)? 
+
+{{ figure(src="team.png", caption="Jakub (right) and me in Vienna, Austria. It's great there.") }}
 
 [jakub]: https://github.com/jakubsacha
