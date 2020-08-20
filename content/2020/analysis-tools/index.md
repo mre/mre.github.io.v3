@@ -107,15 +107,16 @@ so a prerequisite is that the sponsors page had to be meticulously polished.
 
 {{ figure(src="sponsors.png", caption="Our Github Sponsors page") }}
 
-Just like *Star Wars Episode IX*, we received mixed feedback: many people never
+Just like *Star Wars Episode IX*, we received mixed reviews: many people never
 replied, others passed the message
 on to their managers, which in turn never replied, while others again had no
 interest in sponsoring open-source projects in general. That's all fair game:
-people are busy, and sponsorware is quite a new concept. (As little rant: I'm of
-the opinion that tech businesses don't nearly sponsor enough, given all the
-value they get from Open Source. Would your company exist if there hadn't been a
-free operating system like Linux or a web server like Nginx or Apache when you
-got started?)
+people are busy, and sponsorware is quite a new concept. 
+
+> As little rant: I'm of the opinion that tech businesses don't nearly sponsor
+> enough, given all the value they get from Open Source. Would your company
+> exist if there hadn't been a free operating system like Linux or a web server
+> like Nginx or Apache when you got started?)
 
 There was, however, a rare breed of respondents, which expressed interest but
 needed some guidance. For many, it is the first step towards sponsoring _any_
