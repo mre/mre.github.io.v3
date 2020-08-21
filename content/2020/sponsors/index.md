@@ -1,6 +1,12 @@
 +++
 title = "Launching a Side Project Backed by Github Sponsors"
 date = 2020-08-21
+[extra]
+excerpt="""
+Yesterday we launched analysis-tools.dev. It's a project about comparing static
+analysis tools. What's best about the project is that it's completely
+open-source and backed by sponsors. If you like to do the same, keep reading!
+"""
 +++
 
 Yesterday we launched [analysis-tools.dev](https://analysis-tools.dev), and boy had I underestimated the response.
