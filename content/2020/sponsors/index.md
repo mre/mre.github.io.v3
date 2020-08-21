@@ -1,5 +1,5 @@
 +++
-title = "Launching a Side Project with Github Sponsors"
+title = "Launching a Side Project Backed by Github Sponsors"
 date = 2020-08-21
 +++
 
