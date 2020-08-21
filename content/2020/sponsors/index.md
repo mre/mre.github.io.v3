@@ -231,6 +231,6 @@ for a few tools you can recommend? Hey, and if you feel unusually generous today
 (or you have a fabulous employer that supports open-source), why not check out
 our fabulous [sponsorship page](https://github.com/sponsors/analysis-tools-dev/)?
 
-{{ figure(src="team.jpg", caption="Jakub (right) and me in Vienna, Austria. It's great there.") }}
+{{ figure(src="team.jpg", caption="Jakub (right) and me in Vienna, Austria. I'm not actually that small.") }}
 
 [jakub]: https://github.com/jakubsacha
