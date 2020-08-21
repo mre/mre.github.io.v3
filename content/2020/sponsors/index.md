@@ -216,9 +216,9 @@ High fives all around!
 ## Now what?
 
 Let's skip the usual marketing pitch: of course, we'll add new features; of
-course, we have more plans for the future. Instead, let's celebrate that
-milestone: a healthy little business with no ads or trackers, solely carried by
-donations. 🎉
+course, we have more plans for the future, yada yada yada. Instead, let's
+reflect on that milestone: a healthy little business with no ads or trackers,
+solely carried by donations. 🎉
 
 Finally, I want you to look deep inside yourself and find your own little
 product to work on. It's probably right in front of your nose, and like myself,
