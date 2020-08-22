@@ -118,10 +118,10 @@ on to their managers, which in turn never replied, while others again had no
 interest in sponsoring open-source projects in general. That's all fair game:
 people are busy, and sponsorware is quite a new concept.
 
-> As little rant: I'm of the opinion that tech businesses don't nearly sponsor
+> A little rant: I'm of the opinion that tech businesses don't nearly sponsor
 > enough compared to all the value they get from Open Source. Would your company
 > exist if there hadn't been a free operating system like Linux or a web server
-> like Nginx or Apache when you got started?
+> like Nginx or Apache when it was founded?
 
 There was, however, a rare breed of respondents, which expressed interest but
 needed some guidance. For many, it is the first step towards sponsoring _any_
@@ -136,13 +136,13 @@ done](https://www.youtube.com/watch?v=qHfAaG34H30), but it was very reassuring
 to hear from [DeepCode](https://www.deepcode.ai/) - an AI-based semantic
 analysis service, that they were willing to take a chance on us.
 
-Thanks to them, we could move on to finish the product. Because of them, we can
-keep the site free for everybody. It also means the website is kept free from
-ads and trackers.
+Thanks to them, we could push product over the finishing line. Because of them,
+we can keep the site free for everybody. It also means the website is kept free
+from ads and trackers.
 
 In turn, DeepCode gets exposed to many great developers that care about code
 quality and might become loyal customers. Also, they get recognized as an
-open-source-friendly tech company, which is important these days if you're
+open-source-friendly tech company, which is more important than ever if you're
 trying to sell dev tools. Win-win!
 
 ## Marketing
@@ -152,35 +152,36 @@ _open_ product we would build.
 
 **Phase 1: Ship early 🚀**
 
-We decided for a soft launch: deploy the site and let the crawlers index it.
-The page is statically rendered and follows some basic SEO guidelines,
-so we gradually saw our search engine rankings improve.
+We decided for a soft launch: deploy the site as early as possible and let the
+crawlers index it. The fact that the page is statically rendered and follows
+some basic SEO guidelines sure helped with improving our search engine rankings
+over time.
 
 **Phase 2: Ask for feedback from your target audience 💬**
 
 After we got some organic traffic and our first votes, we reached out to our
 developer friends to test the page and vote on tools they know and love. This
 served as an early validation, and we got some honest feedback, which helped us
-catch the most blatant problems.
+catch the most blatant flaws.
 
 **Phase 3: Prepare announcement post 📝**
 
 We wrote a blog post which, even if clickbaity, got the job done: [Static
-Analysis is Broken -- Let's Fix
+Analysis is Broken &mdash; Let's Fix
 It!](https://analysis-tools.dev/blog/static-analysis-is-broken-lets-fix-it) It
-pretty much captures our frustration about the space and why an open platform is
-needed. We could have done a better job explaining the technical differences
-between the different analysis tools, but that's for another day.
+pretty much captures our frustration about the space and why building an open
+platform is important. We could have done a better job explaining the technical
+differences between the different analysis tools, but that's for another day.
 
 **Phase 4: Announce on social media 🔥**
 
 Shortly before the official announcement, we noticed that the search
-functionality was broken. Turns out, we reached the free quota on Algolia a biiit
-quicker than expected. 😅 No biggie: quick exchange with Algolia's customer
-support, and they moved us over to the open-source plan (which we didn't know
-existed until that point). We were back on track!
+functionality was broken (of course). Turns out, we hit the free quota limit on
+[Algolia](algolia.com/) a biiit earlier than expected. 😅 No biggie: quick
+exchange with Algolia's customer support, and they moved us over to the
+open-source plan (which we didn't know existed). We were back on track!
 
-> Site note: Algolia customer support is top-notch. Responsive, knowledgeable
+> Site note: Algolia customer support is top-notch. Responsive, tech-savvy,
 > and helpful. Using Algolia turned out to be a great fit for our product.
 > Response times are consistently in the low milliseconds and the integration
 > with Gatsby was quick and easy.
@@ -189,8 +190,8 @@ existed until that point). We were back on track!
 tweet: 55 retweets, 66 likes and counting",
 link="https://twitter.com/matthiasendler/status/1296162427797671936") }}
 
-Clearly, everyone knew that we were asking for support here, but we're thankful
-for each and everyone that liked and retweeted. It's one of these situations
+Clearly, everyone knew that we were asking for support here, but we are thankful
+for every single one that liked and retweeted. It's one of these situations
 where having a network of like-minded people can help.
 
 As soon as we were confident that the site wasn't _completely_ broken, we set off
@@ -199,44 +200,42 @@ to announce it on
 (2 downvotes),
 [/r/SideProject](https://www.reddit.com/r/SideProject/comments/icupeu/we_made_a_website_to_compare_470_static_analysis/)
 (3 upvotes) and [HackerNews](https://news.ycombinator.com/item?id=24221708) (168
-upvotes, 56 comments). I knew that before, but social media is kind of unpredictable.
+upvotes, 56 comments). Social media is kind of unpredictable.
 It helps to cater the message to each audience and stay humble, though.
 
-The feedback from all of that marketing was **nuts**:
+The response from all of that marketing effort was **nuts**:
 
-{{ figure(src="traffic.jpg", caption="Web traffic on launch day",
-credits="Cloudflare") }}
+{{ figure(src="traffic.jpg", caption="Traffic on launch day") }}
 
 Perhaps unsurprisingly, the Cloudflare edge workers didn't break a sweat.
 
-{{ figure(src="worker.jpg", caption="Edge worker CPU time",
-credits="Cloudflare") }}
+{{ figure(src="worker.jpg", caption="Edge worker CPU time on Cloudflare") }}
 
 My boss [Xoan Vilas](https://twitter.com/xo4n) even did a quick performance
 analysis and he approved. (Thanks boss!)
 
-{{ figure(src="perf.jpg") }}
+{{ figure(src="perf.jpg", link="https://twitter.com/xo4n/status/1296432035788193794") }}
 
 High fives all around!
 
 ## Now what?
 
-Let's skip the usual marketing pitch: of course, we'll add new features; of
-course, we have more plans for the future, yada yada yada. Instead, let's
-reflect on that milestone: a healthy little business with no ads or trackers,
-solely carried by donations. 🎉
+Of course, we'll add new features; of course, we have more plans for the future,
+yada yada yada. Instead, let's reflect on that milestone: a healthy little
+business with no ads or trackers, solely carried by sponsors. 🎉
 
-Finally, I want you to look deep inside yourself and find your own little
-product to work on. It's probably right in front of your nose, and like myself,
-you've been putting it off for too long. Well, not anymore! The next success
-story is yours. So go out and build things.
+Finally, I want you to [look deep inside yourself and find your own little
+product to work on](https://www.youtube.com/watch?v=9XGyxOwM0tE). It's probably
+right in front of your nose, and like myself, you've been putting it off for too
+long. Well, not anymore! The next success story is yours. So go out and build
+things.
 
-Oh wait, before you leave, would you mind checking out
+Oh wait! ...before you leave, would you mind checking out
 [analysis-tools.dev](https://analysis-tools.dev/) and hitting that upvote button
-for a few tools you can recommend? Hey, and if you feel unusually generous today
-(or you have a fabulous employer that supports open-source), why not check out
-our fabulous [sponsorship page](https://github.com/sponsors/analysis-tools-dev/)?
+for a few tools you like? Hey, and if you feel super generous today
+(or you have a fabulous employer that cares about open-source), why not check out
+our [sponsorship page](https://github.com/sponsors/analysis-tools-dev/)?
 
-{{ figure(src="team.jpg", caption="Jakub (right) and me in Vienna, Austria. I'm not actually that small.") }}
+{{ figure(src="team.jpg", caption="Jakub and me in Vienna, Austria. I'm not actually that small.") }}
 
 [jakub]: https://github.com/jakubsacha
