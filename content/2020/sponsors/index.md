@@ -199,8 +199,8 @@ to announce it on
 [Lobste.rs](https://lobste.rs/s/n2ecfs/static_analysis_is_broken_let_s_fix_it)
 (2 downvotes),
 [/r/SideProject](https://www.reddit.com/r/SideProject/comments/icupeu/we_made_a_website_to_compare_470_static_analysis/)
-(3 upvotes) and [HackerNews](https://news.ycombinator.com/item?id=24221708) (168
-upvotes, 56 comments). Social media is kind of unpredictable.
+(3 upvotes) and [HackerNews](https://news.ycombinator.com/item?id=24221708) (173
+upvotes, 57 comments). Social media is kind of unpredictable.
 It helps to cater the message to each audience and stay humble, though.
 
 The response from all of that marketing effort was **nuts**:
