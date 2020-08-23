@@ -29,7 +29,7 @@ and newcomers might use that by accident.
 Using composer and PHP was always a breath of fresh air. Namespaces made these problems
 go away.
 
-What is name squatting?
+## What is name squatting?
 
 German people do reserve all the loungers.
 It's become a trope:
@@ -55,9 +55,11 @@ people can still publish stuff under your "namespace"
 
 https://github.com/google/evcxr
 
-How many names are squatted?
+## How many names are squatted?
 
 Squatted names by length
+
+Short words in local macOS Unix dictionary
 
 Biggest name-squatters by number of taken names
 
