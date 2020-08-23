@@ -8,7 +8,7 @@
 {% block content %}
 {% set section = get_section(path="_index.md") %}
 {% for year, posts in section.pages | group_by(attribute="year") %}
-    <h3 style="">{{ year }}</h3>
+    <h3>{{ year }}</h3>
 
     <ul>
     {% for post in posts %}
