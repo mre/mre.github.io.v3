@@ -35,7 +35,7 @@ Here's a list of some Open Source projects I maintain:
 
 You can find me on [Twitter], [LinkedIn], [Stack Overflow], and [Github] or send me an <a href="mailto:&#109;&#097;&#116;&#116;&#104;&#105;&#097;&#115;&#064;&#101;&#110;&#100;&#108;&#101;&#114;&#046;&#100;&#101;&#118; ">e-mail</a>.
 
-Oh yeah, and I also [give talks][talks]. Let me know if you need a speaker.
+Oh yeah, here is a list of my [previous talks][talks]. Let me know if you need a speaker.
 
 [universität bayreuth]: https://www.uni-bayreuth.de/en/index.html
 [trivago]: https://tech.trivago.com/
