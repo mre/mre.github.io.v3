@@ -72,3 +72,4 @@ Ratio of squatted vs available vs taken and useful
 Last update time of packages
 
 What is the situation for Python/NPM?
+Npm has namespaces https://docs.npmjs.com/using-npm/scope.html
