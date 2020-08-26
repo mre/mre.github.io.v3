@@ -75,7 +75,7 @@ fn lookup(id: &str) -> String {
 
 #[get("/<url>")]
 fn shorten(url: &str) -> String {
-    format!("💾 You shortened {}. Magnificient!", url)
+    format!("💾 You shortened {}. Magnificent!", url)
 }
 
 fn main() {
@@ -124,7 +124,7 @@ Sweet! Let's call our service.
 
 ```
 > curl localhost:8000/shorten/www.endler.dev
-💾 You shortened www.endler.dev. Magnificient!
+💾 You shortened www.endler.dev. Magnificent!
 
 > curl localhost:8000/www.endler.dev
 ⏩ You requested www.endler.dev. Wonderful!
