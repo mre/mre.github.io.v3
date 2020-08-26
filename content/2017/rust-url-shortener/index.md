@@ -1,6 +1,7 @@
 +++
 title="Launching a URL Shortener in Rust using Rocket"
 date=2017-04-09
+updated=2020-08-26
 
 [extra]
 comments = [
@@ -9,8 +10,8 @@ comments = [
 ]
 +++
 
-One common Systems Design task in interviews is to sketch the software architecture of a URL shortener (a [bit.ly](https://bitly.com/) clone, so to say).
-Since I was playing around with Rocket, why not give it a try?
+One common systems design task in interviews is to sketch the software architecture of a URL shortener (a [bit.ly](https://bitly.com/) clone, if you may).
+Since I was playing around with [Rocket](https://rocket.rs/) &ndash; a web framework for Rust &ndash; why not give it a try?
 
 <!-- more -->
 
@@ -20,12 +21,12 @@ Since I was playing around with Rocket, why not give it a try?
 
 A URL shortener has two main responsibilities:
 
-- Create a shorter URL from a longer one (d'oh)
+- Create a short URL for a longer one (d'oh!).
 - Redirect to the longer link when the short link is requested.
 
 Let's call our service `rust.ly` (_Hint, hint:_ the domain is still available at the time of writing...).
 
-First, we create a new Rust project:
+First, let's create a new Rust project:
 
 ```rust
 cargo new --bin rustly
@@ -40,11 +41,16 @@ rocket_codegen = "0.2.4"
 ```
 
 Warning: Most likely you need to get the very newest Rocket version.
-Otherwise, you might get some entertaining error messages. Check out the newest
-version from [crates.io](https://crates.io/crates/rocket).
+Otherwise, you might get some... entertaining error messages. Find the newest
+version on [crates.io](https://crates.io/crates/rocket).
 
 Since Rocket requires cutting-edge Rust features, we need to use a recent nightly
 build. [Rustup](https://rustup.rs/) provides a simple way to switch between stable and nightly.
+
+{% info() %}
+🤔 Nightly Rust might no longer be required. Has anyone tried without and can
+report back?
+{% end %}
 
 ```Rust
 rustup update && rustup override set nightly
@@ -53,7 +59,7 @@ rustup update && rustup override set nightly
 ## A first prototype
 
 Now we can start coding our little service.
-Let's first write a simple "hello world" skeleton to get started.
+First, let's write a simple "hello world" skeleton to get started.
 Put this into `src/main.rs`:
 
 ```rust
@@ -81,7 +87,6 @@ fn main() {
 
 Under the hood, Rocket is doing some magic to enable this nice syntax.
 More specifically, we use the `rocket_codegen` crate for that.
-(It's implemented as a compiler plugin, which is also the reason why we need to use nightly Rust.)
 
 In order to bring the rocket library into scope, we write `extern crate rocket;`.
 
@@ -91,7 +96,7 @@ The attribute can take additional arguments.
 In our case, we define an `id` variable for the `lookup` endpoint and a `url` variable for the `shorten` endpoint.
 Both variables are Unicode string slices. Since Rust has awesome Unicode support, we respond with a nice emoji just to show off. 🕶
 
-Lastly, we need a main function which launches Rocket and mounts our two routes. This way, they become publicly available.
+Lastly, we need a `main` function, which launches Rocket and *mounts* our two routes. This way, they become publicly available.
 If you want to know even more about the in-depth details, I may refer you to the [official Rocket documentation](https://rocket.rs/guide/).
 
 Let's check if we're on the right track by running the application.
@@ -130,12 +135,11 @@ So far so good.
 ## Data storage and lookup
 
 We need to keep the shortened URLs over many requests... but how?
-In a production scenario, we could use some NoSQL data store like Redis for that.
+In a production scenario, we could use some NoSQL data store like [Redis](https://redis.io/) for that.
 Since the goal is to play with Rocket and learn some Rust, we will simply use an
 in-memory store.
 
-Rocket has a feature called [managed state](https://rocket.rs/v0.4/guide/state/).
-
+Rocket has a that feature called [managed state](https://rocket.rs/v0.4/guide/state/).
 In our case, we want to manage a _repository_ of URLs.
 
 First, let's create a file named `src/repository.rs`:
@@ -170,17 +174,17 @@ impl Repository {
 ```
 
 Within this module we first import the `HashMap` implementation from the standard library.
-We also include `shortener::Shortener;`, which will help us to shorten the URLs in the next step. Don't worry too much about that for now.
-By convention, we implement a `new()` method to create a new Repository struct with an empty `HashMap` and a new `Shortener`. Additionally, we have two methods, `store` and `lookup`.
+We also include `shortener::Shortener;`, which helps us shorten the URLs in the next step. Don't worry too much about that for now.
+By convention, we implement a `new()` method to create a `Repository` struct with an empty `HashMap` and a new `Shortener`. Additionally, we have two methods, `store` and `lookup`.
 
-`store` takes a URL and writes it to our in-memory HashMap storage. It uses our yet to be defined shortener to create a unique id. It returns the shortened ID for the entry.
-`lookup` gets a given ID from the storage and returns it as an `Option`. If the ID is found, the return value will be `Some(url)`, if there is no match it will return `None`.
+`store` takes a URL and writes it to our in-memory HashMap storage. It uses our yet-to-be-defined shortener to create a unique id. It returns the shortened ID for the entry.
+`lookup` gets a given ID from the storage, and returns it as an `Option`. If the ID is found, the return value will be `Some(url)`; if there is no match it will return `None`.
 
 Note that we convert the string slices (`&str`) to `String` using the `to_string()` method. This way we don't need to deal with [lifetimes](https://doc.rust-lang.org/book/lifetimes.html). As a beginner, don't think too hard about them.
 
-## Advanced remarks (can safely be skipped)
+## Additional remarks (can safely be skipped)
 
-A seasoned (Rust) Programmer might do a few things differently here. Did you notice the tight coupling between the repository and the shortener? In a production system, `Repository` and `Shortener` might simply be concrete implementations of traits (which are a bit like interfaces in other languages, but more powerful). For example, `Repository` would implement `Cache` trait:
+A seasoned (Rust) developer™ might do a few things differently here. Did you notice the tight coupling between the repository and the shortener? In a production system, `Repository` and `Shortener` might simply be concrete implementations of traits (which are a bit like interfaces in other languages, but more powerful). For example, `Repository` could implement a `Cache` trait:
 
 ```rust
 trait Cache {
@@ -191,9 +195,9 @@ trait Cache {
 }
 ```
 
-This way we get a clear interface, and we can easily switch to a different implementation (e.g. a `RedisCache`). Also, we could have a `MockRepository` to simplify testing. Same for `Shortener`.
+This way we get clear sepration of concerns, and we can easily switch to a different implementation (e.g. a `RedisCache`). Also, we could have a `MockRepository` to simplify testing. Same for `Shortener`.
 
-You might also want to use the `Into` trait to support both, `&str` and `String` as a parameter of `store`:
+On top of that, you might want to use the `Into` trait to support both, `&str` and `String` as parameters of `store`:
 
 ```rust
 pub fn store<T: Into<String>>(&mut self, url: T) -> String {
@@ -210,9 +214,9 @@ For now, let's keep it simple.
 
 Let's implement the URL shortener itself.
 You might be surprised how much was written about URL shortening [all over the web](https://blog.codinghorror.com/url-shortening-hashes-in-practice/).
-One common way is to create [short urls using base 62 conversion](https://stackoverflow.com/questions/742013/how-do-i-create-a-url-shortener).
+One common way is to create [short URLs using base 62 conversion](https://stackoverflow.com/questions/742013/how-do-i-create-a-url-shortener).
 
-After looking around some more, I found this sweet crate called [harsh](https://github.com/archer884/harsh), which perfectly fits the bill.
+After looking around some more, I found this sweet little crate called [harsh](https://github.com/archer884/harsh), which perfectly fits the bill. It creates a hash id from an input string.
 
 To use `harsh`, we add it to the dependency section of our `Cargo.toml`:
 
@@ -253,16 +257,16 @@ impl Shortener {
 }
 ```
 
-With `use harsh::{Harsh, HarshBuilder};` we bring the required structs into scope. Then we define our own `Shortener` struct, which wraps `Harsh`. It has two fields: `id` stores the next id for shortening. (Since there are no negative ids, we use an [unsigned integer](<https://en.wikipedia.org/wiki/Integer_(computer_science)#Value_and_representation>) for that.) The other field is the `generator` itself, for which we use `Harsh`.
-Using the `HarshBuilder` you can do a lot of fancy stuff, like setting a custom alphabet for the ids. For more info, check out the [official docs](https://github.com/archer884/harsh/).
+With `use harsh::{Harsh, HarshBuilder};` we bring the required structs into scope. Then we define our own `Shortener` struct, which wraps `Harsh`. It has two fields: `id` stores the next id for shortening. (Since there won't be any negative ids, we use an [unsigned integer](<https://en.wikipedia.org/wiki/Integer_(computer_science)#Value_and_representation>) for that.) The other field is the `generator` itself, for which we use `Harsh`.
+Using the `HarshBuilder` you can do a lot of fancy stuff, like setting a custom alphabet for the ids. We're good for now, but for more info, check out the [official docs](https://github.com/archer884/harsh/).
 With `next_id` we retrieve a new `String` id for our URLs.
 
-As you can see, we don't pass the URL to `next_id`. That means we actually don't shorten anything. We merely create a short, unique ID. That's because most hashing algorithms produce fairly [long URLs](https://blog.codinghorror.com/url-shortening-hashes-in-practice/) and having short URLs is the whole idea.
+As you can see, we don't pass the URL to `next_id`. That means we actually *don't shorten anything*. We merely create a short, unique ID. That's because most hashing algorithms produce fairly [long URLs](https://blog.codinghorror.com/url-shortening-hashes-in-practice/) and having short URLs is kind of the whole idea.
 
 ## Wiring it up
 
 So we are done with our shortener and the repository.
-We need to adjust our `src/main.rs` again to use the two.
+We need to adjust our `src/main.rs` again to make use of the two.
 
 This is the point where it gets a little hairy.
 
@@ -287,7 +291,7 @@ fn main() {
 
 [State](https://rocket.rs/guide/state/) is the built-in way to save data across requests in Rocket. Just tell it what belongs to your application state with `manage()` and Rocket will automatically inject it into the routes.
 
-But the compiler did not like that:
+But the compiler said no:
 
 ```rust
 error: cannot borrow immutable borrowed content as mutable
@@ -297,14 +301,14 @@ error: cannot borrow immutable borrowed content as mutable
    |     ^^^^ cannot borrow as mutable
 ```
 
-What would happen if two requests wanted to modify our repository at the same time?
-Rust prevented a race condition here!
-Admittedly the error message could have been a bit more user-friendly, though.
+In hindsight it all makes sense: What would happen if two requests wanted to modify our repository at the same time?
+Rust prevented a race condition here! Yikes.
+Admittedly, the error message could have been a bit more user-friendly, though.
 
-Fortunately, Sergio Benitez helped me out on the [Rocket IRC channel](https://kiwiirc.com/client/irc.mozilla.org/#rocket) (thanks again!).
+Fortunately, [Sergio Benitez](https://github.com/SergioBenitez) (the creator of Rocket) helped me out on the [Rocket IRC channel](https://kiwiirc.com/client/irc.mozilla.org/#rocket) (thanks again!).
 The solution was to put the repository behind a Mutex.
 
-Here is the full `src/main.rs` in its entirety:
+Here is our `src/main.rs` in its full glory:
 
 ```rust
 #![feature(plugin, custom_derive)]
@@ -371,8 +375,7 @@ curl --data "url=https://www.endler.dev" https://localhost:8000/
 ```
 
 We get some ID back that we can use to retrieve the URL again. In my case, this was `gY`.
-Point your browser to https://localhost:8000/gY.
-You should be redirected to my homepage.
+Point your browser to https://localhost:8000/gY and you should be redirected to my homepage.
 
 ## Summary
 
