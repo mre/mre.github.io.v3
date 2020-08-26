@@ -11,7 +11,12 @@
 
 {%- block content %}
 <article>
-  <p class='post-meta'>Published on {{ macros::nicedate(daynum=page.day, date=page.date) }}</p>
+  <p class='post-meta'>Published on {{ macros::nicedate(date=page.date) }}
+{%- if page.updated %}
+. Updated on {{ macros::nicedate(date=page.updated) }}
+{%- endif %}
+
+  </p>
   <h1>{{ page.title }}</h1>
   {%if page.extra.subtitle %}
   <h3>&mdash; {{ page.extra.subtitle }}</h3>

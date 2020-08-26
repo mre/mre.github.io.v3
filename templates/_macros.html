@@ -1,17 +1,18 @@
-{% macro nicedate(daynum, date) %}
-{% if daynum == 1 %}
+{% macro nicedate(date) %}
+{% set daynum = date | date(format="%-d") %}
+{% if daynum == "1" %}
 {% set suffix = "st" %}
-{% elif daynum == 21 %}
+{% elif daynum == "21" %}
 {% set suffix = "st" %}
-{% elif daynum == 31 %}
+{% elif daynum == "31" %}
 {% set suffix = "st" %}
-{% elif daynum == 2 %}
+{% elif daynum == "2" %}
 {% set suffix = "nd" %}
-{% elif daynum == 22 %}
+{% elif daynum == "22" %}
 {% set suffix = "nd" %}
-{% elif daynum == 3 %}
+{% elif daynum == "3" %}
 {% set suffix = "rd" %}
-{% elif daynum == 23 %}
+{% elif daynum == "23" %}
 {% set suffix = "rd" %}
 {% else %}
 {% set suffix = "th" %}
