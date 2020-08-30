@@ -1,11 +1,15 @@
 use anyhow::anyhow;
 use glob::glob;
+use image::imageops::FilterType::Lanczos3;
+use image::GenericImageView;
 use std::{
     error::Error,
-    ffi::OsStr,
     fs,
     path::{Path, PathBuf},
 };
+
+// Width of images on blog.
+const MAX_IMAGE_WIDTH: u32 = 650; // pixels
 
 fn main() -> Result<(), Box<dyn Error>> {
     for entry in glob("content/**/raw/*")? {
@@ -49,10 +53,20 @@ fn handle(path: PathBuf) -> Result<(), Box<dyn Error>> {
         // Simply copy over SVG to target directory for now.
         // In the future we could use svgo to optimize here.
         println!("SVG");
+        // TODO enable
+        // fs::copy(path, out_file)?;
+    }
+
+    let img = image::open(&path)?;
+    // Adjust width
+    if img.width() > MAX_IMAGE_WIDTH {
+        let img = img.resize(MAX_IMAGE_WIDTH, 1000, Lanczos3);
+        img.save(out_file)?;
+    } else {
+        // Image is already in the correct format. Just copy over.
         fs::copy(path, out_file)?;
     }
 
-    //     adjust width
     //     create webp
     //     create avif
     //     cp image to out_dir
