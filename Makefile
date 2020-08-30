@@ -8,6 +8,10 @@ help: ## This help message
 content: ## Build the content of the static site with zola
 	zola build
 
+.PHONY: images
+images: ## Create webp and avif images 
+	cargo run --manifest-path ./helpers/img/Cargo.toml
+
 .PHONY: index
 index: content ## Build the search index with tinysearch
 	tinysearch --optimize --path static public/json/index.html
