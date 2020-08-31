@@ -61,13 +61,9 @@ fn handle(path: PathBuf) -> Result<(), Box<dyn Error>> {
     // This is not so beautiful...
     let out_dir = Path::new("static").join(
         in_dir
+            .strip_prefix("content/")?
             .parent()
-            .ok_or(anyhow!("Cannot get parent for {}", in_dir.display()))?
-            .parent()
-            .ok_or(anyhow!(
-                "Cannot get parent of parent for {}",
-                in_dir.display()
-            ))?,
+            .ok_or(anyhow!("Cannot get parent for {}", in_dir.display()))?,
     );
     let out_file = out_dir.join(filename);
 
