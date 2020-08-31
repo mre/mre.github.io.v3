@@ -11,9 +11,10 @@ use std::{
 
 // Width of images on blog.
 const MAX_IMAGE_WIDTH: u32 = 650; // pixels
+const INPUT_PATH: &'static str = "content/**/raw/*";
 
 fn main() -> Result<(), Box<dyn Error>> {
-    for entry in glob("content/**/raw/*")? {
+    for entry in glob(INPUT_PATH)? {
         match entry {
             Ok(path) => handle(path)?,
             Err(e) => println!("{:?}", e),
@@ -49,6 +50,7 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<(), Box<dyn Error>> {
 
 fn handle(path: PathBuf) -> Result<(), Box<dyn Error>> {
     println!("{}", path.display());
+
     let filename = path
         .file_name()
         .ok_or(anyhow!("Unexpected file: {}", path.display()))?;
@@ -56,7 +58,17 @@ fn handle(path: PathBuf) -> Result<(), Box<dyn Error>> {
         .parent()
         .ok_or(anyhow!("Unexpected dir: {}", path.display()))?;
 
-    let out_dir = Path::new("static").join(in_dir);
+    // This is not so beautiful...
+    let out_dir = Path::new("static").join(
+        in_dir
+            .parent()
+            .ok_or(anyhow!("Cannot get parent for {}", in_dir.display()))?
+            .parent()
+            .ok_or(anyhow!(
+                "Cannot get parent of parent for {}",
+                in_dir.display()
+            ))?,
+    );
     let out_file = out_dir.join(filename);
 
     println!("in_file = {:?}", filename);
@@ -89,11 +101,5 @@ fn handle(path: PathBuf) -> Result<(), Box<dyn Error>> {
         &out_file
     )
     .run()?;
-
-    //     create webp
-    //     create avif
-    //     cp image to out_dir
-    //     cp image.webp to out_dir
-    //     cp image.avif to out_dir
     Ok(())
 }
