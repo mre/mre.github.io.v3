@@ -42,8 +42,7 @@ thought the idea was so obvious that others must have tried before and failed.
 I put it off, even though nobody stepped in to fill this niche.  
 I put it off, even though I kept the list up-to-date for five years, just to
 learn about the tools out there.  
-You get the gist: When ideas sound obvious, it's probably because they are, so
-don't put things off for too long.
+You get the gist: don't put things off for too long. When ideas sound obvious, it's probably because they are.
 
 ## Revenue Model
 
