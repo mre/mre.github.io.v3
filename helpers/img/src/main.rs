@@ -2,7 +2,7 @@ use anyhow::anyhow;
 use duct::cmd;
 use glob::glob;
 use image::imageops::FilterType::Lanczos3;
-use image::GenericImageView;
+use image::{GenericImageView, ImageFormat};
 use std::{
     error::Error,
     fs,
@@ -35,16 +35,12 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<(), Box<dyn Error>> {
         fs::copy(path, out_file)?;
         return Ok(());
     }
-
-    let img = image::open(&path)?;
+    let mut img = image::open(&path)?;
     // Adjust width
     if img.width() > MAX_IMAGE_WIDTH {
-        let img = img.resize(MAX_IMAGE_WIDTH, 1000, Lanczos3);
-        img.save(&out_file)?;
-    } else {
-        // Image is already in the correct format. Just copy over.
-        fs::copy(path, &out_file)?;
-    };
+        img = img.resize(MAX_IMAGE_WIDTH, 1000, Lanczos3);
+    }
+    img.save_with_format(out_file.with_extension("jpg"), ImageFormat::Jpeg)?;
     Ok(())
 }
 
