@@ -2,6 +2,12 @@
 title = "Adding AVIF Support to my Blog"
 date = 2020-09-02
 draft =true
+[extra]
+excerpt="""Did I mention that this website is fast?
+Oh yeah, I did. Multiple times.
+It's never fast enough, so today I go one step further by adding
+support for the new AVIF image format to the blog. The results were suprising.
+"""
 +++
 
 Did I mention that this website is fast?
@@ -56,7 +62,7 @@ I want this for my blog!
 {% end %}
 
 [AVIF support for Zola](https://github.com/image-rs/image/issues/1152) is not quite there yet, but I want this now!
-So I whipped up an [ugly Rust script](https://github.com/mre/mre.github.io/tree/source/helpers/img) (as I do) that creates AVIF images from my old JPEG and PNG images.
+So I whipped up an [ugly Rust script](https://github.com/mre/mre.github.io/tree/source/helpers/img) (as I do) that creates AVIF images from my old JPEG and PNG images. I keep the raw original files around as a backup.
 
 Under the hood it uses [cavif](https://github.com/kornelski/cavif) by [kornelski](https://github.com/kornelski).
 (Yeah, it also creates webp as a fallback &mdash; just in case.)
