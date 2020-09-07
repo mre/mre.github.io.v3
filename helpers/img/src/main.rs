@@ -42,16 +42,19 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
     )
     .run()?;
 
-    cmd!(
-        "cjpeg",
-        "-quality",
-        "85",
-        "-optimize",
-        out_file,
-        ">",
-        out_file.with_extension("jpg"),
-    )
-    .run()?;
+    if ext == "png" {
+        let cmd = cmd!(
+            "cjpeg",
+            "-quality",
+            "85",
+            "-optimize",
+            "-outfile",
+            out_file.with_extension("jpg"),
+            out_file,
+        );
+        dbg!(&cmd);
+        cmd.run()?;
+    }
 
     Ok(())
 }
