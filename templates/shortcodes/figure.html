@@ -3,9 +3,19 @@
     <a href="{{ link }}">
         {% endif %}
 
-        {% set meta_path = page.path~src %}
+        {% if src is not ending_with(".webp") %}
+            {% set meta_path = "../static/"~page.path~src %}
+            {% set meta = get_image_metadata(path=meta_path) %}
+        {% endif %} 
+
+        {% if src is not ending_with("svg") %}
+        <picture>
+            <source srcset="{{ src | replace(from="jpg", to="avif")}}" type="image/avif" />
+            <source srcset="{{ src | replace(from="jpg", to="webp")}}" type="image/webp" />
+        {% endif %}
+
         <img src="{{ src }}" 
-        loading="lazy"
+
         {% if alt %}
             alt="{{ alt }}"
         {% elif caption %}
@@ -13,6 +23,9 @@
         {% elif credits %}
             alt="{{ credits | markdown(inline=true) | safe }}"
         {% endif %}
+
+        {# Give the browser a hand by telling it the image width upfront #}
+        {# It will then use reserve the necessary space and avoid layout changes #}
         {% if width %}
             width="{{ width }}"
         {% elif meta.width %}
@@ -24,6 +37,9 @@
             height="{{ meta.height }}"
         {% endif %} 
         />
+        {% if src is not ending_with("svg") %}
+            </picture>
+        {% endif %}
 
         {% if link %}
     </a>
