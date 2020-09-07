@@ -21,6 +21,7 @@ Few reasons (from simple to crazy):
 - No web fonts (sadly)
 - No Google Analytics (got [something better...](https://jorgelbg.me/dashflare/))
 - Avoid JavaScript whenever possible; CSS covers 90% of my use-cases
+- Specify image width/height in HTML to avoid page reflows.
 - Inlined, optimized SVG graphics and CSS
 - [Static WASM search](https://github.com/tinysearch/tinysearch) (lazy loaded)
 - Entire homepage is <10K (brotli-compressed) including graphics, thus should fit into the [first HTTP round-trip](https://www.tunetheweb.com/blog/critical-resources-and-the-first-14kb/).
@@ -36,9 +37,10 @@ But to me, **lean is beautiful**!
 I use SVG whenever possible for diagrams and illustrations.
 Only if it's a photo I'll use JPEG or [WebP](https://developers.google.com/speed/webp/).
 
-To be honest with you, my dear reader, I never really liked WebP.
-It was [forced upon us by Chrome](https://bugzilla.mozilla.org/show_bug.cgi?id=856375) and it might not even be smaller than JPEGs compressed with [MozJPEG](https://siipo.la/blog/is-webp-really-better-than-jpeg)!
-That entire thing was a marketing stunt and as of today Safari [still doesn't support it](https://caniuse.com/#search=webp).
+To be honest with you, I never really liked WebP.
+There is a long [debate on the Mozilla bug tracker](https://bugzilla.mozilla.org/show_bug.cgi?id=856375) if you want to read more.
+It might not even be smaller than JPEGs compressed with [MozJPEG](https://siipo.la/blog/is-webp-really-better-than-jpeg)!
+Safari [still doesn't support it](https://caniuse.com/#search=webp) to this day.
 
 Meet [AVIF](https://aomediacodec.github.io/av1-avif/), the new next-gen image compression format.
 If WebP was the empire, AVIF would be the rebellion.
@@ -88,12 +90,9 @@ So I can use the `<picture>` element to serve the right format to you. (Look ma,
 
 [The real
 thing](https://github.com/mre/mre.github.io/blob/source/templates/shortcodes/figure.html)
-is a bit more convoluted, but you get the idea. Images even get lazy-loaded
-thanks to the new
-[`loading=lazy`](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)
-HTML attribute. 🥳
+is a bit more convoluted, but you get the idea.
 
-But hold on for a sec... is your browser actually capable of using AVIF?
+But hold on for a sec... is your browser even capable of showing AVIF?
 
 BROWSER SUPPORT BUTTON HERE.
 

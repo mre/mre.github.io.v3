@@ -13,7 +13,7 @@ comments = [
   {name = "Reddit", url = "https://www.reddit.com/r/golang/comments/70iwcd/go_vs_rust_choose_go/"}]
 +++
 
-{{ figure(src="./hero.svg", credits="Gopher designed with <a href='https://gopherize.me'>Gopherize.me</a>. Gears designed by <a href='https://www.freepik.com/free-vector/gear-background-with-pieces-different-colors_966124.htm'>Freepik</a>") }}
+{{ figure(src="hero.svg", credits="Gopher designed with <a href='https://gopherize.me'>Gopherize.me</a>. Gears designed by <a href='https://www.freepik.com/free-vector/gear-background-with-pieces-different-colors_966124.htm'>Freepik</a>") }}
 
 "Rust or Go, which one should I choose?" is a question I get quite often.
 Both languages seem to be competing for the same user base and they both seem to be
@@ -23,7 +23,7 @@ _systems programming_ languages, so there must be a clear winner, right?
 
 ## Go: practical, pragmatic, plain
 
-<img src="./go.png" alt="The Golang learning curve over time, a straight line."/>
+<img src="go.jpg" alt="The Golang learning curve over time, a straight line."/>
 
 I don't think Go is an elegant language. Its biggest feature is simplicity.
 Go is not even a systems programming language. While it's great for writing microservices and tooling around backend infrastructure, I would not want to write a kernel or a memory allocator with it.
@@ -34,7 +34,7 @@ The mantra is: solve real problems today.
 
 ## Rust's strong guarantees come at a cost
 
-<img src="./rust.png" alt="The Rust learning curve over time, a bumpy ride."/>
+<img src="rust.jpg" alt="The Rust learning curve over time, a bumpy ride."/>
 
 Rust in comparison is **hard**. It took me many months to become somewhat productive.
 You need to invest a serious amount of time to see any benefit.
@@ -126,7 +126,7 @@ This was just a quick example, of course. I suggest, you browse some code on [Ro
 If you're more like a visual type, here is a video where I write a simple
 concurrent program in Go and Rust to compare both languages:
 
-{{ video(id="B5xYBrxVSiE", preview="preview.jpg") }}
+{{ video(id="B5xYBrxVSiE", preview="maxresdefault.jpg") }}
 
 ## Some things I prefer in Go
 

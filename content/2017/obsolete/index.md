@@ -8,7 +8,7 @@ excerpt="In December 2015 I was looking for static analysis tools to integrate i
 social_img="2017_obsolete.png"
 +++
 
-{{ figure(src="./dinosaur.svg", caption="The Stegosaurus had better days 150 million years ago.", credits="Paleontologists once thought it had a [brain in its butt](https://en.wikipedia.org/wiki/Stegosaurus#.22Second_brain.22).")}}
+{{ figure(src="dinosaur.svg", caption="The Stegosaurus had better days 150 million years ago.", credits="Paleontologists once thought it had a [brain in its butt](https://en.wikipedia.org/wiki/Stegosaurus#.22Second_brain.22).")}}
 
 In December 2015 I was looking for static analysis tools to integrate into [trivago](https://tech.trivago.com/)'s CI process.
 The idea was to detect typical programming mistakes automatically.

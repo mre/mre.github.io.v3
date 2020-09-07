@@ -73,7 +73,7 @@ The trick is that it doesn't store the elements themselves; it just knows with
 some confidence that they were stored before. In our case, it can say with a
 certain _error rate_ that a word is in an article.
 
-{{ figure(src="./bloomfilter.svg", caption="A Bloom filter stores a
+{{ figure(src="bloomfilter.svg", caption="A Bloom filter stores a
 'fingerprint' (a number of hash values) of all input values instead of the raw
 input. The result is a low-memory-footprint data structure. This is an example
 of 'hello' as an input.") }}

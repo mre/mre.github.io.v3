@@ -3,25 +3,13 @@ title = "Hi, I'm Matthias Endler!"
 path = "about"
 +++
 
-<style>
-    .fancy {
-        padding:2px; border: 2px solid #c35; width:44%;
-    }
-
-    @media screen and (max-width: 640px) {
-        .fancy{
-            width: 100%;
-        }
-    }
-</style>
-
-<img class="fancy" src="matthias.jpg" alt="Matthias Endler's profile photo" />
+{{ figure(src="matthias.jpg") }}
 
 I'm a Backend Developer / Site Reliability Engineer living in Düsseldorf, Germany.
 
 My interests are scalability, performance and distributed systems;
 but I also play around with embedded systems and console emulation.
-I got an M.Sc. in Computer Science from [Universität Bayreuth].
+I have a master's degree in Computer Science from [Universit&auml;t Bayreuth].
 At work, I improve the backend infrastructure of [trivago] by making it
 faster and more reliable.
 
@@ -37,7 +25,7 @@ You can find me on [Twitter], [LinkedIn], [Stack Overflow], and [Github] or send
 
 Oh yeah, here is a list of my [previous talks][talks]. Let me know if you need a speaker.
 
-[universität bayreuth]: https://www.uni-bayreuth.de/en/index.html
+[Universit&auml;t bayreuth]: https://www.uni-bayreuth.de/en/index.html
 [trivago]: https://tech.trivago.com/
 [*hello, rust!*]: https://hello-rust.show
 [talks]: @/static/talks/index.md

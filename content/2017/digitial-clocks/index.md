@@ -12,7 +12,7 @@ As a result I didn't set the correct time, instead, I set a cooking timer... and
 
 <!-- more -->
 
-{{ figure(src="./kitchen.svg") }}
+{{ figure(src="kitchen.svg") }}
 
 ## Let's add a clock to the microwave!
 

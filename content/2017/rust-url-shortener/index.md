@@ -15,7 +15,7 @@ Since I was playing around with [Rocket](https://rocket.rs/) &ndash; a web frame
 
 <!-- more -->
 
-{{ figure(src="./rocket.svg", caption="A rocket travelling through space") }}
+{{ figure(src="rocket.svg", caption="A rocket travelling through space") }}
 
 ## Requirements
 
@@ -96,7 +96,7 @@ The attribute can take additional arguments.
 In our case, we define an `id` variable for the `lookup` endpoint and a `url` variable for the `shorten` endpoint.
 Both variables are Unicode string slices. Since Rust has awesome Unicode support, we respond with a nice emoji just to show off. 🕶
 
-Lastly, we need a `main` function, which launches Rocket and *mounts* our two routes. This way, they become publicly available.
+Lastly, we need a `main` function, which launches Rocket and _mounts_ our two routes. This way, they become publicly available.
 If you want to know even more about the in-depth details, I may refer you to the [official Rocket documentation](https://rocket.rs/guide/).
 
 Let's check if we're on the right track by running the application.
@@ -261,7 +261,7 @@ With `use harsh::{Harsh, HarshBuilder};` we bring the required structs into scop
 Using the `HarshBuilder` you can do a lot of fancy stuff, like setting a custom alphabet for the ids. We're good for now, but for more info, check out the [official docs](https://github.com/archer884/harsh/).
 With `next_id` we retrieve a new `String` id for our URLs.
 
-As you can see, we don't pass the URL to `next_id`. That means we actually *don't shorten anything*. We merely create a short, unique ID. That's because most hashing algorithms produce fairly [long URLs](https://blog.codinghorror.com/url-shortening-hashes-in-practice/) and having short URLs is kind of the whole idea.
+As you can see, we don't pass the URL to `next_id`. That means we actually _don't shorten anything_. We merely create a short, unique ID. That's because most hashing algorithms produce fairly [long URLs](https://blog.codinghorror.com/url-shortening-hashes-in-practice/) and having short URLs is kind of the whole idea.
 
 ## Wiring it up
 

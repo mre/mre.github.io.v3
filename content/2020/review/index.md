@@ -49,7 +49,7 @@ January 2010. Nobody had even heard of a [Raspberry
 Pi](https://en.wikipedia.org/wiki/Raspberry_Pi) (which only got released in
 2012).
 
-{{ figure(src="xkcd_2324.png", credits="<a href='https://xkcd.com/2324/'>xkcd #2324</a>") }}
+{{ figure(src="xkcd_2324.jpg", credits="<a href='https://xkcd.com/2324/'>xkcd #2324</a>") }}
 
 ## An Explosion Of New Programming Languages
 
@@ -146,7 +146,7 @@ packages that somebody else is maintaining for you. Add another [160,488 Ruby
 gems](https://rubygems.org/stats), [243,984 Python projects](https://pypi.org/),
 and top it off with [42,547  Rust crates](https://crates.io/).
 
-{{ figure(src="module_counts.png", caption="Number of packages for popular programming languages.<br /> Don't ask me what happened to npm in 2019.", credits="<a href='http://www.modulecounts.com/'>Module Counts</a>" )}}
+{{ figure(src="module_counts.jpg", caption="Number of packages for popular programming languages.<br /> Don't ask me what happened to npm in 2019.", credits="<a href='http://www.modulecounts.com/'>Module Counts</a>" )}}
 
 Of course, there's the occasional
 [leftpad](https://www.davidhaney.io/npm-left-pad-have-we-forgotten-how-to-program/),
@@ -169,7 +169,7 @@ We also went a bit crazy on frontend frameworks:
 A review like this wouldn't be complete without taking a peek at [Moore's Law](https://en.wikipedia.org/wiki/Moore's_law).
 It has held up surprisingly well in the last decade:
 
-{{ figure(src="moore_2018.png" credits="<a href='https://en.wikipedia.org/wiki/Moore%27s_law'>Wikipedia</a>") }}
+{{ figure(src="moore_2018.jpg" credits="<a href='https://en.wikipedia.org/wiki/Moore%27s_law'>Wikipedia</a>") }}
 
 There's a catch, though.
 Looking at single-core performance, the curve is flattening:

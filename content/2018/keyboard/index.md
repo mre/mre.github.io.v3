@@ -98,7 +98,7 @@ me. It allows me to use a single Keyboard layout but insert German umlauts at wi
 
 ## Is switching between keyboards painful?
 
-{{ figure(src="./KB_United_States.svg", caption="US keyboard layout" credits="[Wikipedia](https://commons.wikimedia.org/wiki/File:KB_United_States.svg)") }}
+{{ figure(src="KB_United_States.svg", caption="US keyboard layout" credits="[Wikipedia](https://commons.wikimedia.org/wiki/File:KB_United_States.svg)") }}
 
 My built-in MacBook Pro keyboard layout is still German. I was afraid, that switching between
 the internal German and the external English keyboard would confuse me. This

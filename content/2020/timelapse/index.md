@@ -35,7 +35,7 @@ drawing app inspired by
 [obligatory CMS software](https://github.com/mre/Creamy), that I sold to
 clients. Surprisingly, none of them were a great success.
 
-{{ figure(src="./drawroom.png", caption="DrawRoom, a tool that I wrote around the same time, is a real piece of art. To this day it has five commits and a single Github star (by myself, don't judge...).") }}
+{{ figure(src="drawroom.jpg", caption="DrawRoom, a tool that I wrote around the same time, is a real piece of art. To this day it has five commits and a single Github star (by myself, don't judge...).") }}
 
 What I _do_ know for sure is that I was unhappy with all existing screen
 recorders. They could roughly be categorized into these three groups:

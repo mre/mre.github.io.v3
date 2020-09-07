@@ -4,19 +4,17 @@ date=2018-03-22
 
 [extra]
 subtitle="Without Mocking or Temporary Files"
-social_img="2018-go-io-testing.png"
 comments = [
   {name = "Reddit", url = "https://www.reddit.com/r/golang/comments/86f4gw/refactoring_go_code_to_avoid_file_io_in_unit_tests/"}
 ]
 +++
-
 
 At work today, I refactored some simple Go code to make it more testable.
 The idea was to avoid file handling in unit tests without mocking or using temporary files by separating data input/output and data manipulation.
 
 <!-- more -->
 
-{{ figure(src="./gopher.svg", caption="A gopher reading a long computer printout" credits="Illustration by [Marcus Olsson](https://github.com/marcusolsson/gophers/) CC BY-NC-SA 4.0") }}
+{{ figure(src="gopher.svg", caption="A gopher reading a long computer printout" credits="Illustration by [Marcus Olsson](https://github.com/marcusolsson/gophers/) CC BY-NC-SA 4.0") }}
 
 I was surprised that I couldn't find a simple explanation on sites like StackOverflow,
 which is why I wrote down some notes myself so that others can refer to it in the future.
@@ -75,7 +73,7 @@ func Test_analyze(t *testing.T) {
 }
 ```
 
-All fine and good?  
+All fine and good?
 
 ## Problems
 
@@ -89,7 +87,7 @@ All these issues have nothing to do with your code.
 
 Furthermore, it's not enough to just look at the test and see exactly what's going on. You also have to read the text file first.
 
-A lot of people [suggest mocking](https://stackoverflow.com/a/37035375/270334) instead. 
+A lot of people [suggest mocking](https://stackoverflow.com/a/37035375/270334) instead.
 There are quite a few powerful libraries like [spf13/afero](https://github.com/spf13/afero) for this purpose.
 These packages will create temporary files in the background and clean up afterward.
 
@@ -164,16 +162,17 @@ We changed `analyze("test.txt")` to `doSomething(strings.NewReader("This is a te
 
 By slightly refactoring our code, we gained the following advantages:
 
-* *Simple testability*: No mocks or temporary files.
-* *Separation of concerns*: Each function does exactly one thing.
-* *Easier code re-use*: The `doSomething()` function will work with any `io.Reader` and can be called from other places. We can even move it to its own library if we want.
+- _Simple testability_: No mocks or temporary files.
+- _Separation of concerns_: Each function does exactly one thing.
+- _Easier code re-use_: The `doSomething()` function will work with any `io.Reader` and can be called from other places. We can even move it to its own library if we want.
 
-On Reddit, user [soapysops](https://www.reddit.com/user/soapysops) made an [important remark](https://www.reddit.com/r/golang/comments/86f4gw/refactoring_go_code_to_avoid_file_io_in_unit_tests/dw4l2bq/):  
+On Reddit, user [soapysops](https://www.reddit.com/user/soapysops) made an [important remark](https://www.reddit.com/r/golang/comments/86f4gw/refactoring_go_code_to_avoid_file_io_in_unit_tests/dw4l2bq/):
+
 > In general, I prefer to not accept a file name in an API. A file name doesn't give users enough control. It doesn't let you use an unusual encoding, special file permissions, or a bytes.Buffer instead of an actual file, for example. Accepting a file name adds a huge dependency to the code: the file system, along with all of its associated OS specific stuff.
 >
 > So I probably would have eliminated the file name based API and only exposed one based on io.Reader. That way, you have complete code coverage, fast tests, and far fewer edge cases to worry about.
 
 I totally agree with that sentiment.  
-But often times you can't simply change the user-facing API easily, because the API might be public and might already have users. 
+But often times you can't simply change the user-facing API easily, because the API might be public and might already have users.
 The refactoring above is just the first step towards better architecture. There is definitely a lot more you can do.
 If that got you interested, also check out [justforfunc #29: dependency injection in a code review](https://youtu.be/ifBUfIb7kdo), which talks about the same topic.

@@ -103,7 +103,7 @@ For that, cargo has a special treat for you: ✨ `cargo check` ✨. Consider the
 differences in the number of instructions between `cargo check` on the left and
 `cargo debug` in the middle. (Note that the scales are different.)
 
-![Speedup factors: check 1, debug 5, opt 20](cargo-check.webp)
+{{ figure(src="cargo-check.jpg", caption="Speedup factors: check 1, debug 5, opt 20") }}
 
 A sweet trick I use is to run it in the background with [`cargo watch`](https://github.com/passcod/cargo-watch). This way, it will `cargo check`
 whenever you change a file.
@@ -296,7 +296,8 @@ compiler that runs in parallel with `rustc` for every CI build:
 Here is a comparison between `rustc` and Cranelift for some popular crates (blue
 means better):
 
-![LLVM compile time comparison between rustc and cranelift in favor of cranelift](cranelift.webp)
+{{ figure(src="cranelift.jpg",
+caption="LLVM compile time comparison between rustc and cranelift in favor of cranelift") }}
 
 Somewhat unbelieving, I tried to compile
 [vector](https://github.com/timberio/vector) with both compilers.
@@ -355,7 +356,7 @@ If you like to dig deeper, Rust compilation can be profiled with [`cargo rustc -
 The resulting trace file can be visualized with a flamegraph or the Chromium
 profiler:
 
-{{ figure(src="chrome_profiler.webp", caption="Image of Chrome profiler with all crates", credits="Rust Lang Blog") }}
+{{ figure(src="chrome_profiler.jpg", caption="Image of Chrome profiler with all crates", credits="Rust Lang Blog") }}
 
 There's also a [`cargo -Z timings`](https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#timings)
 feature that gives some information about how long each compilation step takes,
