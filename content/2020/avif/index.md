@@ -10,6 +10,8 @@ support for the new AVIF image format to the blog. The results were suprising.
 """
 +++
 
+{{ figure(src="avif.svg") }}
+
 Did I mention that this website is fast?
 Oh yeah, [I did](/2019/tinysearch/). [Multiple times](/2017/image-previews/).
 
