@@ -34,12 +34,25 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
         fs::copy(path, out_file)?;
         return Ok(());
     }
-    let mut img = image::open(&path)?;
-    // Adjust width
-    if img.width() > MAX_IMAGE_WIDTH {
-        img = img.resize(MAX_IMAGE_WIDTH, 1000, Lanczos3);
-    };
-    img.save_with_format(&out_file, ImageFormat::Jpeg)?;
+
+    cmd!(
+        "convert",
+        &path,
+        "-resize",
+        MAX_IMAGE_WIDTH.to_string() + "\\>",
+        out_file
+    )
+    .run()?;
+
+    cmd!(
+        "convert",
+        &path,
+        "-resize",
+        MAX_IMAGE_WIDTH.to_string() + "\\>",
+        out_file.with_extension("jpg")
+    )
+    .run()?;
+
     Ok(())
 }
 
@@ -80,10 +93,6 @@ fn handle(path: PathBuf) -> Result<()> {
 
     fs::create_dir_all(&out_dir)?;
 
-    if orig_extension == "png" {
-        out_file = out_file.with_extension("jpg");
-    }
-
     dbg!(&out_file);
 
     if !out_file.exists() {
@@ -97,7 +106,7 @@ fn handle(path: PathBuf) -> Result<()> {
 
     let webp_file = out_file.with_extension("webp");
     if !webp_file.exists() {
-        cmd!("cwebp", &path, "-o", webp_file).run()?;
+        cmd!("cwebp", &out_file, "-o", webp_file).run()?;
     }
 
     let avif_file = out_file.with_extension("avif");
@@ -108,7 +117,7 @@ fn handle(path: PathBuf) -> Result<()> {
             "--overwrite",
             "-o",
             avif_file,
-            &path
+            &out_file
         )
         .run()?;
     }
