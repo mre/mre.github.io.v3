@@ -57,7 +57,6 @@ fn handle(path: PathBuf) -> Result<()> {
     let out_dir = Path::new("static").join(
         in_dir
             .strip_prefix("content/")?
-            .strip_prefix("static/")?
             .parent()
             .ok_or(anyhow!("Cannot get parent for {}", in_dir.display()))?,
     );
@@ -98,7 +97,7 @@ fn handle(path: PathBuf) -> Result<()> {
 
     let webp_file = out_file.with_extension("webp");
     if !webp_file.exists() {
-        cmd!("cwebp", &out_file, "-o", webp_file).run()?;
+        cmd!("cwebp", &path, "-o", webp_file).run()?;
     }
 
     let avif_file = out_file.with_extension("avif");
@@ -109,7 +108,7 @@ fn handle(path: PathBuf) -> Result<()> {
             "--overwrite",
             "-o",
             avif_file,
-            &out_file
+            &path
         )
         .run()?;
     }
