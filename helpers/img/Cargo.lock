@@ -183,6 +183,7 @@ dependencies = [
  "duct",
  "glob",
  "image",
+ "rayon",
 ]
 
 [[package]]

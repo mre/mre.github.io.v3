@@ -1,10 +1,10 @@
-use anyhow::anyhow;
+use anyhow::{anyhow, Result};
 use duct::cmd;
 use glob::glob;
 use image::imageops::FilterType::Lanczos3;
 use image::{GenericImageView, ImageFormat};
+use rayon::prelude::*;
 use std::{
-    error::Error,
     fs,
     path::{Path, PathBuf},
 };
@@ -13,17 +13,16 @@ use std::{
 const MAX_IMAGE_WIDTH: u32 = 650; // pixels
 const INPUT_PATH: &'static str = "content/**/raw/*";
 
-fn main() -> Result<(), Box<dyn Error>> {
-    for entry in glob(INPUT_PATH)? {
-        match entry {
-            Ok(path) => handle(path)?,
-            Err(e) => println!("{:?}", e),
-        }
-    }
+fn main() -> Result<()> {
+    let entries: Vec<PathBuf> = glob(INPUT_PATH)?.filter_map(Result::ok).collect();
+    entries
+        .into_par_iter()
+        .map(|entry| handle(entry))
+        .collect::<Vec<_>>();
     Ok(())
 }
 
-fn copy_original(path: &Path, out_file: &Path) -> Result<(), Box<dyn Error>> {
+fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
     if path
         .extension()
         .ok_or(anyhow!("Cannot get extension for {}", path.display()))?
@@ -39,12 +38,12 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<(), Box<dyn Error>> {
     // Adjust width
     if img.width() > MAX_IMAGE_WIDTH {
         img = img.resize(MAX_IMAGE_WIDTH, 1000, Lanczos3);
-    }
-    img.save_with_format(out_file.with_extension("jpg"), ImageFormat::Jpeg)?;
+    };
+    img.save_with_format(&out_file, ImageFormat::Jpeg)?;
     Ok(())
 }
 
-fn handle(path: PathBuf) -> Result<(), Box<dyn Error>> {
+fn handle(path: PathBuf) -> Result<()> {
     println!("{}", path.display());
 
     let filename = path
@@ -58,40 +57,61 @@ fn handle(path: PathBuf) -> Result<(), Box<dyn Error>> {
     let out_dir = Path::new("static").join(
         in_dir
             .strip_prefix("content/")?
+            .strip_prefix("static/")?
             .parent()
             .ok_or(anyhow!("Cannot get parent for {}", in_dir.display()))?,
     );
-    let out_file = out_dir.join(filename);
+    let mut out_file = out_dir.join(filename);
 
-    println!("in_file = {:?}", filename);
-    println!("in_dir = {:?}", in_dir);
-    println!("out_dir = {:?}", out_dir);
-    println!("out_file = {:?}", out_file);
+    dbg!(&filename);
+    dbg!(&in_dir);
+    dbg!(&out_dir);
+
+    if filename == ".DS_Store" {
+        return Ok(());
+    }
+
+    let orig_extension = path
+        .extension()
+        .ok_or(anyhow!("Cannot get extension for {}", path.display()))?;
+
+    if orig_extension == "afdesign" {
+        return Ok(());
+    }
 
     fs::create_dir_all(&out_dir)?;
+
+    if orig_extension == "png" {
+        out_file = out_file.with_extension("jpg");
+    }
+
+    dbg!(&out_file);
 
     if !out_file.exists() {
         copy_original(&path, &out_file)?;
     }
 
-    if path
-        .extension()
-        .ok_or(anyhow!("Cannot get extension for {}", path.display()))?
-        == "svg"
-    {
-        // We're done for SVG here.
+    if orig_extension == "svg" || orig_extension == "gif" {
+        // We're done here.
         return Ok(());
     }
 
-    cmd!("cwebp", &out_file, "-o", &out_file.with_extension("webp")).run()?;
-    cmd!(
-        "cavif",
-        "--quality=30",
-        "--overwrite",
-        "-o",
-        &out_file.with_extension("avif"),
-        &out_file
-    )
-    .run()?;
+    let webp_file = out_file.with_extension("webp");
+    if !webp_file.exists() {
+        cmd!("cwebp", &out_file, "-o", webp_file).run()?;
+    }
+
+    let avif_file = out_file.with_extension("avif");
+    if !avif_file.exists() {
+        cmd!(
+            "cavif",
+            "--quality=80",
+            "--overwrite",
+            "-o",
+            avif_file,
+            &out_file
+        )
+        .run()?;
+    }
     Ok(())
 }
