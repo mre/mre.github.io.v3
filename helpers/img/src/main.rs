@@ -1,8 +1,6 @@
 use anyhow::{anyhow, Result};
 use duct::cmd;
 use glob::glob;
-use image::imageops::FilterType::Lanczos3;
-use image::{GenericImageView, ImageFormat};
 use rayon::prelude::*;
 use std::{
     fs,
@@ -23,11 +21,11 @@ fn main() -> Result<()> {
 }
 
 fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
-    if path
+    let ext = path
         .extension()
-        .ok_or(anyhow!("Cannot get extension for {}", path.display()))?
-        == "svg"
-    {
+        .ok_or(anyhow!("Cannot get extension for {}", path.display()))?;
+
+    if ext == "svg" || ext == "gif" {
         // Simply copy over SVG to target directory for now.
         // In the future we could use svgo to optimize here.
         println!("SVG");
@@ -38,18 +36,20 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
     cmd!(
         "convert",
         &path,
-        "-resize",
+        "-adaptive-resize",
         MAX_IMAGE_WIDTH.to_string() + ">",
         out_file
     )
     .run()?;
 
     cmd!(
-        "convert",
-        &path,
-        "-resize",
-        MAX_IMAGE_WIDTH.to_string() + ">",
-        out_file.with_extension("jpg")
+        "cjpeg",
+        "-quality",
+        "85",
+        "-optimize",
+        out_file,
+        ">",
+        out_file.with_extension("jpg"),
     )
     .run()?;
 
@@ -73,7 +73,7 @@ fn handle(path: PathBuf) -> Result<()> {
             .parent()
             .ok_or(anyhow!("Cannot get parent for {}", in_dir.display()))?,
     );
-    let mut out_file = out_dir.join(filename);
+    let out_file = out_dir.join(filename);
 
     dbg!(&filename);
     dbg!(&in_dir);
@@ -114,6 +114,7 @@ fn handle(path: PathBuf) -> Result<()> {
         cmd!(
             "cavif",
             "--quality=80",
+            "--speed=2",
             "--overwrite",
             "-o",
             avif_file,

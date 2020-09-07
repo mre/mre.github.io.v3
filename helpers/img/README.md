@@ -8,6 +8,7 @@
 
 - [cavif](https://github.com/kornelski/cavif) 0.4.0 or higher
 - [cwebp](https://developers.google.com/speed/webp/docs/cwebp) 1.1.0 or higher
+- [Image Magick](https://imagemagick.org)
 
 ## Pseudocode
 
