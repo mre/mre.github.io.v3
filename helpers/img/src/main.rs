@@ -39,7 +39,7 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
         "convert",
         &path,
         "-resize",
-        MAX_IMAGE_WIDTH.to_string() + "\\>",
+        MAX_IMAGE_WIDTH.to_string() + ">",
         out_file
     )
     .run()?;
@@ -48,7 +48,7 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
         "convert",
         &path,
         "-resize",
-        MAX_IMAGE_WIDTH.to_string() + "\\>",
+        MAX_IMAGE_WIDTH.to_string() + ">",
         out_file.with_extension("jpg")
     )
     .run()?;
