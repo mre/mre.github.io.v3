@@ -25,37 +25,39 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
         .extension()
         .ok_or(anyhow!("Cannot get extension for {}", path.display()))?;
 
-    if ext == "svg" || ext == "gif" {
-        // Simply copy over SVG to target directory for now.
-        // In the future we could use svgo to optimize here.
-        println!("SVG");
-        fs::copy(path, out_file)?;
-        return Ok(());
+    if !out_file.exists() {
+        if ext == "svg" || ext == "gif" {
+            // Simply copy over SVG to target directory for now.
+            // In the future we could use svgo to optimize here.
+            println!("SVG");
+            fs::copy(path, out_file)?;
+        } else {
+            cmd!(
+                "convert",
+                &path,
+                "-adaptive-resize",
+                MAX_IMAGE_WIDTH.to_string() + ">",
+                out_file
+            )
+            .run()?;
+        }
     }
 
-    cmd!(
-        "convert",
-        &path,
-        "-adaptive-resize",
-        MAX_IMAGE_WIDTH.to_string() + ">",
-        out_file
-    )
-    .run()?;
+    if !out_file.with_extension("jpg").exists() {
+        cmd!(
+            "convert",
+            &path,
+            "-adaptive-resize",
+            MAX_IMAGE_WIDTH.to_string() + ">",
+            out_file.with_extension("jpg")
+        )
+        .run()?;
 
-    if ext == "png" {
-        let cmd = cmd!(
-            "cjpeg",
-            "-quality",
-            "85",
-            "-optimize",
-            "-outfile",
-            out_file.with_extension("jpg"),
-            out_file,
-        );
-        dbg!(&cmd);
-        cmd.run()?;
+        // let output = cmd!("cjpeg", "-quality", "85", "-optimize", out_file)
+        //     .stdout_capture()
+        //     .read()?;
+        // fs::write(out_file.with_extension("jpg"), output)?;
     }
-
     Ok(())
 }
 
@@ -96,11 +98,7 @@ fn handle(path: PathBuf) -> Result<()> {
 
     fs::create_dir_all(&out_dir)?;
 
-    dbg!(&out_file);
-
-    if !out_file.exists() {
-        copy_original(&path, &out_file)?;
-    }
+    copy_original(&path, &out_file)?;
 
     if orig_extension == "svg" || orig_extension == "gif" {
         // We're done here.
@@ -116,8 +114,8 @@ fn handle(path: PathBuf) -> Result<()> {
     if !avif_file.exists() {
         cmd!(
             "cavif",
-            "--quality=80",
-            "--speed=2",
+            "--quality=85",
+            "--speed=1",
             "--overwrite",
             "-o",
             avif_file,
