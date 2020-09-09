@@ -33,11 +33,13 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
             fs::copy(path, out_file)?;
         } else {
             cmd!(
+                "magick",
                 "convert",
                 &path,
-                "-adaptive-resize",
+                "-strip",
+                "-resize",
                 MAX_IMAGE_WIDTH.to_string() + ">",
-                out_file
+                out_file,
             )
             .run()?;
         }
@@ -45,9 +47,21 @@ fn copy_original(path: &Path, out_file: &Path) -> Result<()> {
 
     if !out_file.with_extension("jpg").exists() {
         cmd!(
+            "magick",
             "convert",
             &path,
-            "-adaptive-resize",
+            "-strip",
+            "-interlace",
+            "JPEG",
+            "-sharpen",
+            "0x1.0",
+            "-quality",
+            "90%",
+            "-sampling-factor",
+            "4:2:0",
+            "-colorspace",
+            "RGB",
+            "-resize",
             MAX_IMAGE_WIDTH.to_string() + ">",
             out_file.with_extension("jpg")
         )
