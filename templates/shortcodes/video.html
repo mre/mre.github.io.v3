@@ -7,7 +7,11 @@
     data-start="{{start}}"
   {% endif %}
 > 
-  <img src="{{preview}}" />
+  <picture>
+    <source srcset="{{ preview | replace(from="jpg", to="avif") }}" type="image/avif" />
+    <source srcset="{{ preview | replace(from="jpg", to="webp") }}" type="image/webp" />
+    <img src="{{preview}}" />
+  </picture>
   <div class="play"></div>
 </div>
 
