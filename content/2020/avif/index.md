@@ -15,7 +15,7 @@ support for the new AVIF image format to the blog. The results were suprising.
 Did I mention that this website is fast?
 Oh yeah, [I did](/2019/tinysearch/). [Multiple times](/2017/image-previews/).
 
-Few reasons (from simple to crazy):
+Few reasons (from normal to mildly concerning):
 
 - Static site
 - Cached on Cloudflare CDN
@@ -50,15 +50,15 @@ Open, peer-reviewed, no licensing fees &mdash; yup, just like the rebellion.
 
 ## Just Skip The Chase Already
 
-Okay okay. Look at this!
+Okay okay. Let's do this!
 
 https://twitter.com/smashingmag/status/1297907612898471942
 
 – 50% savings compared to JPEG
 – 20% savings compared to WebP
-– Supported since Chrome 85 and Firefox 80
+– Supported by Chrome 85 and Firefox 80
 
-[It hit me like a hurricane](https://www.youtube.com/watch?v=BixwVsiDdZM):
+[It hit me like a hurricane](https://www.youtube.com/watch?v=BixwVsiDdZM) 🌪️:
 
 {% info() %}
 Holy smokes, AVIF is supported by major browsers now!? 😲  
@@ -107,3 +107,9 @@ If that reads "nope", then you have a few options:
 
 So there you have it! AVIF from the future is here today.
 Add it to your sites as well so that you save me some bandwidth next time I come by.
+
+## Further reading
+
+- [How to Use AVIF: The New Next-Gen Image Compression Format](https://reachlightspeed.com/blog/using-the-new-high-performance-avif-image-format-on-the-web-today/) &mdash; Nice introduction that highlithts some common pitfalls when integrating AVIF.
+- [AVIF has landed](https://jakearchibald.com/2020/avif-has-landed/) by Jake Archibald &mdash; Compares image sizes and qualities of different formats: SVG, JPEG, PNG, WebP, and AVIF.
+- [Squoosh](https://squoosh.app/) &mdash; image compression service built with WebAssembly that supports AVIF.
