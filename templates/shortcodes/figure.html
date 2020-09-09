@@ -8,11 +8,12 @@
             {% set meta = get_image_metadata(path=meta_path) %}
         {% endif %} 
 
-        {% if src is not ending_with("svg") %}
+        {# {% if src is not ending_with("svg") %}
         <picture>
             <source srcset="{{ src | replace(from="jpg", to="avif")}}" type="image/avif" />
             <source srcset="{{ src | replace(from="jpg", to="webp")}}" type="image/webp" />
         {% endif %}
+        #}
 
         <img src="{{ src }}" 
 
@@ -37,9 +38,11 @@
             height="{{ meta.height }}"
         {% endif %} 
         />
+        {#
         {% if src is not ending_with("svg") %}
             </picture>
         {% endif %}
+        #}
 
         {% if link %}
     </a>
